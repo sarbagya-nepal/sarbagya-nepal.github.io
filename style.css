@@ -20,6 +20,15 @@
   --primary: #650aa7;
 }
 
+.darkmode {
+  --foreground: #ffffff;
+  --background: #000000;
+  --alt-background: #f0f0f0;
+  --translucent-background: #000000cc;
+  --alt-foreground: #d4d4d4;
+  --primary: #650aa7;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -29,7 +38,7 @@ body {
   color: var(--foreground);
   font-family: "Noto Sans", sans-serif;
   font-size: 1.2rem;
-  position: relative;
+  /* position: relative; */
 }
 
 a,
@@ -41,7 +50,7 @@ li {
 
 .nav-wrapper {
   background-color: var(--translucent-background);
-  z-index: 99;
+  z-index: 999;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(100px);
   display: flex;
@@ -98,8 +107,20 @@ li {
   min-height: 100vh;
   padding: 0 10%;
   gap: 2rem;
+  position: relative;
 }
 
+.toggle {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--alt-background);
+  color: var(--background);
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+}
 .hero .infos > p.top-info {
   margin-bottom: -1.2rem;
 }
@@ -211,21 +232,16 @@ h2 {
   cursor: pointer;
 }
 
-.work > .links {
-  display: flex;
-  gap: 1rem;
-}
-
 .links > a {
   font-size: 2rem;
 }
-
+/* 
 .about {
   min-height: 20vh;
-}
+} */
 
 .contact {
-  padding: 6rem 5rem;
+  padding: 6rem 2rem;
   background-color: var(--foreground);
   color: var(--background);
   display: flex;
@@ -257,7 +273,7 @@ h2 {
 
 .contact-wrapper > .contact-links {
   width: 100%;
-  min-width: 600px;
+  min-width: 50%;
   max-width: 50%;
   padding: 1em;
   display: flex;
@@ -267,6 +283,7 @@ h2 {
 }
 
 .contact-links > a {
+  width: 100%;
   padding: 1.5rem;
   border: 1px solid #222;
   border-radius: 12px;
@@ -282,6 +299,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .contact-links > a > .arrow {
@@ -298,6 +316,74 @@ h2 {
 footer {
   display: grid;
   place-content: center;
-  padding: 1rem;
+  padding: 0.8rem;
   /* background-color: var(--dark-background); */
+  font-size: 0.8em;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 760px) {
+  body {
+    font-size: 0.9rem;
+  }
+  .hamburger_menu {
+    display: flex;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  .nav-wrapper {
+    background-color: var(--background);
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav.open {
+    display: block;
+  }
+  .navlist {
+    border-top: 1px solid var(--alt-foreground);
+    padding-block: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 100%;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid var(--alt-foreground);
+    background-color: var(--background);
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  .contact-wrapper > .contact-links {
+    min-width: 70%;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 590px) {
+  body {
+    font-size: 0.8rem;
+  }
+
+  .hero > .infos > h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.2rem;
+  }
+
+  .contact-wrapper > .contact-links {
+    min-width: 93%;
+    max-width: 93%;
+  }
+
+  .about-wrapper {
+    /* max-width: 1200px; */
+    /* margin: auto; */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
 }
